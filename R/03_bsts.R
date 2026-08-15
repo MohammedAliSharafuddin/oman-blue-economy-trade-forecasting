@@ -1,4 +1,4 @@
-# Oman_RG/ms1_trade_prediction/03_bsts.R
+# Oman_RG/03_bsts.R
 #
 # Fits Bayesian Structural Time Series models (via bsts) to each sector x
 # flow series produced by 01_import_unctadstat.R, as the alternative to
@@ -27,7 +27,7 @@ library(dplyr)
 library(readr)
 library(bsts)
 
-trade <- read_csv("ms1_trade_prediction/data/processed/trade_series_by_sector.csv", show_col_types = FALSE)
+trade <- read_csv("data/processed/trade_series_by_sector.csv", show_col_types = FALSE)
 
 restrict_to_longest_run <- function(df) {
   df <- df |> arrange(year)
@@ -141,11 +141,11 @@ bsts_forecast_tbl <- bind_rows(lapply(bsts_full_fits, function(r) {
   )
 }))
 
-dir.create("ms1_trade_prediction/output", showWarnings = FALSE, recursive = TRUE)
-write_csv(bsts_forecast_tbl, "ms1_trade_prediction/output/bsts_forecast.csv")
-write_csv(bsts_fit_stats, "ms1_trade_prediction/output/bsts_fit_stats.csv")
-write_csv(bsts_backtest_tbl, "ms1_trade_prediction/output/bsts_backtest_origins.csv")
-saveRDS(bsts_full_fits, "ms1_trade_prediction/data/processed/bsts_results.rds")
+dir.create("output", showWarnings = FALSE, recursive = TRUE)
+write_csv(bsts_forecast_tbl, "output/bsts_forecast.csv")
+write_csv(bsts_fit_stats, "output/bsts_fit_stats.csv")
+write_csv(bsts_backtest_tbl, "output/bsts_backtest_origins.csv")
+saveRDS(bsts_full_fits, "data/processed/bsts_results.rds")
 
 message(
   "BSTS: rolling-origin backtest across ", nrow(series_keys), " sector-flow series, ",

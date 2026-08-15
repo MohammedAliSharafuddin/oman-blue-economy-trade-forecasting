@@ -1,4 +1,4 @@
-# Oman_RG/ms1_trade_prediction/00b_comtradr_crosscheck.R
+# Oman_RG/00b_comtradr_crosscheck.R
 #
 # Independent cross-check of the Fisheries and seafood processing sector
 # against raw UN Comtrade goods trade (not UNCTADstat's ocean-adjusted
@@ -64,13 +64,13 @@ comtrade_fisheries <- raw |>
   summarise(value_usd_comtrade = sum(value_usd, na.rm = TRUE), n_hs_codes = n(), .groups = "drop") |>
   arrange(flow, year)
 
-dir.create("ms1_trade_prediction/output", showWarnings = FALSE, recursive = TRUE)
-write_csv(comtrade_fisheries, "ms1_trade_prediction/output/comtrade_fisheries_crosscheck.csv")
+dir.create("output", showWarnings = FALSE, recursive = TRUE)
+write_csv(comtrade_fisheries, "output/comtrade_fisheries_crosscheck.csv")
 
 # Compare against the UNCTADstat-derived fisheries series already in the
 # pipeline, where the flow labels are "Exports"/"Imports" (plural, per the
 # UNCTADstat source) rather than comtradr's "Export"/"Import" singular.
-unctad_fisheries <- read_csv("ms1_trade_prediction/data/processed/trade_series_by_sector.csv", show_col_types = FALSE) |>
+unctad_fisheries <- read_csv("data/processed/trade_series_by_sector.csv", show_col_types = FALSE) |>
   filter(sector == "Fisheries and seafood processing") |>
   mutate(flow = sub("s$", "", flow)) |> # "Exports" -> "Export" to match comtradr's labels
   select(year, flow, value_usd_unctadstat = value_usd)
@@ -83,7 +83,7 @@ comparison <- comtrade_fisheries |>
   ) |>
   arrange(flow, year)
 
-write_csv(comparison, "ms1_trade_prediction/output/fisheries_crosscheck_comparison.csv")
+write_csv(comparison, "output/fisheries_crosscheck_comparison.csv")
 
 message("Comtrade cross-check: ", nrow(comtrade_fisheries), " year-flow rows fetched.")
 message("Comparison against UNCTADstat fisheries series, ", nrow(comparison), " overlapping year-flow rows:")

@@ -1,4 +1,4 @@
-# Oman_RG/ms1_trade_prediction/06_naive_ets_baselines.R
+# Oman_RG/06_naive_ets_baselines.R
 #
 # Adds two small-sample-appropriate baseline forecasting methods, random
 # walk with drift and ETS (Holt's linear trend, chosen automatically by
@@ -24,7 +24,7 @@ library(dplyr)
 library(readr)
 library(forecast)
 
-trade <- read_csv("ms1_trade_prediction/data/processed/trade_series_by_sector.csv", show_col_types = FALSE)
+trade <- read_csv("data/processed/trade_series_by_sector.csv", show_col_types = FALSE)
 
 horizon <- 5 # matches 02_arima.R's headline forecast horizon
 
@@ -120,9 +120,9 @@ for (i in seq_len(nrow(series_keys))) {
 naive_backtest_tbl <- bind_rows(naive_backtests)
 ets_backtest_tbl <- bind_rows(ets_backtests)
 
-dir.create("ms1_trade_prediction/output", showWarnings = FALSE, recursive = TRUE)
-write_csv(naive_backtest_tbl, "ms1_trade_prediction/output/naive_backtest_origins.csv")
-write_csv(ets_backtest_tbl, "ms1_trade_prediction/output/ets_backtest_origins.csv")
+dir.create("output", showWarnings = FALSE, recursive = TRUE)
+write_csv(naive_backtest_tbl, "output/naive_backtest_origins.csv")
+write_csv(ets_backtest_tbl, "output/ets_backtest_origins.csv")
 
 build_forecast_tbl <- function(fits) {
   bind_rows(lapply(fits, function(r) {
@@ -140,12 +140,12 @@ build_forecast_tbl <- function(fits) {
 naive_forecast_tbl <- build_forecast_tbl(naive_full_fits)
 ets_forecast_tbl <- build_forecast_tbl(ets_full_fits)
 
-write_csv(naive_forecast_tbl, "ms1_trade_prediction/output/naive_forecast.csv")
-write_csv(ets_forecast_tbl, "ms1_trade_prediction/output/ets_forecast.csv")
+write_csv(naive_forecast_tbl, "output/naive_forecast.csv")
+write_csv(ets_forecast_tbl, "output/ets_forecast.csv")
 
 # ---- Check origins match the ARIMA/BSTS backtest exactly -------------
 
-arima_backtest <- read_csv("ms1_trade_prediction/output/arima_backtest_origins.csv", show_col_types = FALSE)
+arima_backtest <- read_csv("output/arima_backtest_origins.csv", show_col_types = FALSE)
 origin_check <- arima_backtest |>
   select(sector, flow, origin_year, actual) |>
   anti_join(naive_backtest_tbl |> select(sector, flow, origin_year, actual), by = c("sector", "flow", "origin_year", "actual"))
@@ -155,7 +155,7 @@ if (nrow(origin_check) > 0) {
 
 # ---- Combine into a five-method accuracy comparison --------------------
 
-bsts_backtest <- read_csv("ms1_trade_prediction/output/bsts_backtest_origins.csv", show_col_types = FALSE) |>
+bsts_backtest <- read_csv("output/bsts_backtest_origins.csv", show_col_types = FALSE) |>
   rename(bsts_forecast = point_forecast)
 arima_backtest <- arima_backtest |> rename(arima_forecast = point_forecast)
 
@@ -190,14 +190,14 @@ preferred_method_5 <- accuracy_comparison_5method |>
   ungroup() |>
   select(sector, flow, preferred_method = method, RMSE, n_origins)
 
-write_csv(accuracy_comparison_5method, "ms1_trade_prediction/output/accuracy_comparison_5method.csv")
-write_csv(preferred_method_5, "ms1_trade_prediction/output/preferred_method_5method.csv")
+write_csv(accuracy_comparison_5method, "output/accuracy_comparison_5method.csv")
+write_csv(preferred_method_5, "output/preferred_method_5method.csv")
 
 # ---- Five-method forecast table, for Figure 2 ---------------------------
 
-arima_forecast <- read_csv("ms1_trade_prediction/output/arima_forecast.csv", show_col_types = FALSE) |>
+arima_forecast <- read_csv("output/arima_forecast.csv", show_col_types = FALSE) |>
   mutate(method = "ARIMA")
-bsts_forecast <- read_csv("ms1_trade_prediction/output/bsts_forecast.csv", show_col_types = FALSE) |>
+bsts_forecast <- read_csv("output/bsts_forecast.csv", show_col_types = FALSE) |>
   mutate(method = "BSTS")
 combination_forecast <- arima_forecast |>
   select(sector, flow, year, arima_pf = point_forecast) |>
@@ -217,7 +217,7 @@ forecast_comparison_5method <- bind_rows(
 ) |>
   arrange(sector, flow, year, method)
 
-write_csv(forecast_comparison_5method, "ms1_trade_prediction/output/forecast_comparison_5method.csv")
+write_csv(forecast_comparison_5method, "output/forecast_comparison_5method.csv")
 
 message(
   "5-method comparison written (ARIMA, BSTS, Combination, Naive with drift, ETS).\n",

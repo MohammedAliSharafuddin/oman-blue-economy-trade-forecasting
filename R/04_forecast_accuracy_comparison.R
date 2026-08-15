@@ -1,4 +1,4 @@
-# Oman_RG/ms1_trade_prediction/04_forecast_accuracy_comparison.R
+# Oman_RG/04_forecast_accuracy_comparison.R
 #
 # Compares ARIMA (02_arima.R) and BSTS (03_bsts.R) on genuine out-of-sample,
 # rolling-origin backtest accuracy (not in-sample fit, which an earlier
@@ -11,9 +11,9 @@
 library(dplyr)
 library(readr)
 
-arima_backtest <- read_csv("ms1_trade_prediction/output/arima_backtest_origins.csv", show_col_types = FALSE) |>
+arima_backtest <- read_csv("output/arima_backtest_origins.csv", show_col_types = FALSE) |>
   rename(arima_forecast = point_forecast)
-bsts_backtest <- read_csv("ms1_trade_prediction/output/bsts_backtest_origins.csv", show_col_types = FALSE) |>
+bsts_backtest <- read_csv("output/bsts_backtest_origins.csv", show_col_types = FALSE) |>
   rename(bsts_forecast = point_forecast)
 
 backtest_joined <- arima_backtest |>
@@ -37,9 +37,9 @@ accuracy_comparison <- backtest_long |>
   ) |>
   arrange(sector, flow, method)
 
-arima_forecast <- read_csv("ms1_trade_prediction/output/arima_forecast.csv", show_col_types = FALSE) |>
+arima_forecast <- read_csv("output/arima_forecast.csv", show_col_types = FALSE) |>
   mutate(method = "ARIMA")
-bsts_forecast <- read_csv("ms1_trade_prediction/output/bsts_forecast.csv", show_col_types = FALSE) |>
+bsts_forecast <- read_csv("output/bsts_forecast.csv", show_col_types = FALSE) |>
   mutate(method = "BSTS")
 
 combination_forecast <- arima_forecast |>
@@ -64,10 +64,10 @@ preferred_method <- accuracy_comparison |>
   ungroup() |>
   select(sector, flow, preferred_method = method, RMSE, n_origins)
 
-dir.create("ms1_trade_prediction/output", showWarnings = FALSE, recursive = TRUE)
-write_csv(accuracy_comparison, "ms1_trade_prediction/output/accuracy_comparison.csv")
-write_csv(forecast_comparison, "ms1_trade_prediction/output/forecast_comparison.csv")
-write_csv(preferred_method, "ms1_trade_prediction/output/preferred_method_by_flow.csv")
+dir.create("output", showWarnings = FALSE, recursive = TRUE)
+write_csv(accuracy_comparison, "output/accuracy_comparison.csv")
+write_csv(forecast_comparison, "output/forecast_comparison.csv")
+write_csv(preferred_method, "output/preferred_method_by_flow.csv")
 
 message(
   "Accuracy comparison written (rolling-origin backtest, ARIMA vs BSTS vs Combination).\n",

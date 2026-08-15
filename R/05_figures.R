@@ -1,4 +1,4 @@
-# Oman_RG/ms1_trade_prediction/05_figures.R
+# Oman_RG/05_figures.R
 #
 # Builds the manuscript's figures from the real pipeline output only (no
 # invented data points). Colour follows the dataviz skill's fixed-order
@@ -35,7 +35,7 @@ pal_method_5 <- c(
 )
 pal_source <- c(UNCTADstat = "#2a78d6", Comtrade = "#eb6834")
 
-theme_ms1 <- theme_minimal(base_size = 11) +
+theme_forecast <- theme_minimal(base_size = 11) +
   theme(
     panel.grid.minor = element_blank(),
     panel.grid.major = element_line(colour = "grey90", linewidth = 0.3),
@@ -47,7 +47,7 @@ theme_ms1 <- theme_minimal(base_size = 11) +
 
 # ---- Figure 1: historical series, all 4 sectors x 2 flows -------------
 
-trade <- read_csv("ms1_trade_prediction/data/processed/trade_series_by_sector.csv", show_col_types = FALSE)
+trade <- read_csv("data/processed/trade_series_by_sector.csv", show_col_types = FALSE)
 
 # geom_line() connects consecutive rows regardless of the actual year gap
 # between them, which would draw a straight line across e.g. Maritime
@@ -78,9 +78,9 @@ fig1 <- ggplot(trade_runs, aes(x = year, y = value_usd / 1e6, colour = flow, gro
     caption = "Maritime freight transport exports has no published Oman figure for 2006-2017.",
     x = NULL, y = NULL
   ) +
-  theme_ms1
+  theme_forecast
 
-ggsave("ms1_trade_prediction/figures/fig1_historical_series.png", fig1, width = 9, height = 6.5, dpi = 300, bg = "white")
+ggsave("figures/fig1_historical_series.png", fig1, width = 9, height = 6.5, dpi = 300, bg = "white")
 
 # ---- Figure 2: forecast fan chart, all 8 series, 5 methods -------------
 #
@@ -96,7 +96,7 @@ ggsave("ms1_trade_prediction/figures/fig1_historical_series.png", fig1, width = 
 # anyone who wants them, and RMSE (the accuracy dimension Figure 2 would
 # otherwise be standing in for) is already Figure 3's job.
 
-forecasts <- read_csv("ms1_trade_prediction/output/forecast_comparison_5method.csv", show_col_types = FALSE)
+forecasts <- read_csv("output/forecast_comparison_5method.csv", show_col_types = FALSE)
 
 hist_for_plot <- trade_runs |>
   transmute(sector, flow, year, value_usd, method = "Historical", run_id)
@@ -123,13 +123,13 @@ fig2 <- ggplot() +
     subtitle = "Grey = historical. Combination (dashed) has no interval of its own.\nARIMA, BSTS, Naive and ETS intervals are in the output CSVs, not shown here to keep 8 panels readable.",
     x = NULL, y = NULL
   ) +
-  theme_ms1
+  theme_forecast
 
-ggsave("ms1_trade_prediction/figures/fig2_forecast_fan_chart.png", fig2, width = 10, height = 12, dpi = 300, bg = "white")
+ggsave("figures/fig2_forecast_fan_chart.png", fig2, width = 10, height = 12, dpi = 300, bg = "white")
 
 # ---- Figure 3: out-of-sample accuracy (RMSE) by method -----------------
 
-accuracy <- read_csv("ms1_trade_prediction/output/accuracy_comparison_5method.csv", show_col_types = FALSE) |>
+accuracy <- read_csv("output/accuracy_comparison_5method.csv", show_col_types = FALSE) |>
   mutate(method = factor(method, levels = c("ARIMA", "BSTS", "Combination", "Naive (drift)", "ETS")))
 
 fig3 <- ggplot(accuracy, aes(x = method, y = RMSE / 1e6, fill = method)) +
@@ -142,14 +142,14 @@ fig3 <- ggplot(accuracy, aes(x = method, y = RMSE / 1e6, fill = method)) +
     subtitle = "Lower is better. Naive (drift) and ETS are small-sample benchmarks.\nMaritime freight transport exports omitted (too few years for a backtest).",
     x = NULL, y = "RMSE (US$M)"
   ) +
-  theme_ms1 +
+  theme_forecast +
   theme(axis.text.x = element_text(angle = 40, hjust = 1))
 
-ggsave("ms1_trade_prediction/figures/fig3_accuracy_by_method.png", fig3, width = 11, height = 6.5, dpi = 300, bg = "white")
+ggsave("figures/fig3_accuracy_by_method.png", fig3, width = 11, height = 6.5, dpi = 300, bg = "white")
 
 # ---- Figure 4: Comtrade vs UNCTADstat fisheries cross-check ------------
 
-crosscheck <- read_csv("ms1_trade_prediction/output/fisheries_crosscheck_comparison.csv", show_col_types = FALSE)
+crosscheck <- read_csv("output/fisheries_crosscheck_comparison.csv", show_col_types = FALSE)
 
 crosscheck_long <- bind_rows(
   crosscheck |> transmute(year, flow, value_usd = value_usd_unctadstat, source = "UNCTADstat"),
@@ -168,9 +168,9 @@ fig4 <- ggplot(crosscheck_long, aes(x = year, y = value_usd / 1e6, colour = sour
     caption = "Tracking in trend, not identical in level, is the expected result of comparing an adjusted and an unadjusted source.",
     x = NULL, y = NULL
   ) +
-  theme_ms1
+  theme_forecast
 
-ggsave("ms1_trade_prediction/figures/fig4_comtrade_crosscheck.png", fig4, width = 9, height = 4.5, dpi = 300, bg = "white")
+ggsave("figures/fig4_comtrade_crosscheck.png", fig4, width = 9, height = 4.5, dpi = 300, bg = "white")
 
 message("4 figures written to figures/: ",
         paste(list.files("figures", pattern = "\\.png$"), collapse = ", "))

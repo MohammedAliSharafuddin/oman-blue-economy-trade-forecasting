@@ -1,4 +1,4 @@
-# Oman_RG/ms1_trade_prediction/00c_fisheries_extended_comtrade.R
+# Oman_RG/00c_fisheries_extended_comtrade.R
 #
 # Builds an extended-history version of the Fisheries and seafood
 # processing series, 2000-2024 (25 years) instead of the UNCTADstat
@@ -76,8 +76,8 @@ if (n_years < n_expected) {
   )
 }
 
-dir.create("ms1_trade_prediction/data/processed", showWarnings = FALSE, recursive = TRUE)
-write_csv(fisheries_extended, "ms1_trade_prediction/data/processed/fisheries_extended_comtrade.csv")
+dir.create("data/processed", showWarnings = FALSE, recursive = TRUE)
+write_csv(fisheries_extended, "data/processed/fisheries_extended_comtrade.csv")
 
 message(
   "Extended fisheries series (Comtrade HS 03+16, Oman, ", min(fisheries_extended$year),

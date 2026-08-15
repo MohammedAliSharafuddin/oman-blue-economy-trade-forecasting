@@ -1,4 +1,4 @@
-# Oman_RG/ms1_trade_prediction/02_arima.R
+# Oman_RG/02_arima.R
 #
 # Fits ARIMA models (via forecast::auto.arima) to each sector x flow series
 # produced by 01_import_unctadstat.R (sector-level, not the national
@@ -26,7 +26,7 @@ library(readr)
 library(tidyr)
 library(forecast)
 
-trade <- read_csv("ms1_trade_prediction/data/processed/trade_series_by_sector.csv", show_col_types = FALSE)
+trade <- read_csv("data/processed/trade_series_by_sector.csv", show_col_types = FALSE)
 
 restrict_to_longest_run <- function(df) {
   df <- df |> arrange(year)
@@ -128,7 +128,7 @@ arima_backtests <- list()
 arima_full_fits <- list()
 
 continuity_log <- list()
-dir.create("ms1_trade_prediction/output", showWarnings = FALSE, recursive = TRUE)
+dir.create("output", showWarnings = FALSE, recursive = TRUE)
 
 for (i in seq_len(nrow(series_keys))) {
   sec <- series_keys$sector[i]
@@ -151,7 +151,7 @@ for (i in seq_len(nrow(series_keys))) {
 }
 
 continuity_tbl <- bind_rows(continuity_log)
-write_csv(continuity_tbl, "ms1_trade_prediction/output/series_continuity_log.csv")
+write_csv(continuity_tbl, "output/series_continuity_log.csv")
 
 arima_backtest_tbl <- bind_rows(arima_backtests)
 
@@ -177,11 +177,11 @@ arima_forecast_tbl <- bind_rows(lapply(arima_full_fits, function(r) {
   )
 }))
 
-dir.create("ms1_trade_prediction/output", showWarnings = FALSE, recursive = TRUE)
-write_csv(arima_forecast_tbl, "ms1_trade_prediction/output/arima_forecast.csv")
-write_csv(arima_fit_stats, "ms1_trade_prediction/output/arima_fit_stats.csv")
-write_csv(arima_backtest_tbl, "ms1_trade_prediction/output/arima_backtest_origins.csv")
-saveRDS(arima_full_fits, "ms1_trade_prediction/data/processed/arima_results.rds")
+dir.create("output", showWarnings = FALSE, recursive = TRUE)
+write_csv(arima_forecast_tbl, "output/arima_forecast.csv")
+write_csv(arima_fit_stats, "output/arima_fit_stats.csv")
+write_csv(arima_backtest_tbl, "output/arima_backtest_origins.csv")
+saveRDS(arima_full_fits, "data/processed/arima_results.rds")
 
 message(
   "ARIMA: rolling-origin backtest across ", nrow(series_keys), " sector-flow series, ",

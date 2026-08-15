@@ -1,4 +1,4 @@
-# Oman_RG/ms1_trade_prediction/07_fisheries_extended_backtest.R
+# Oman_RG/07_fisheries_extended_backtest.R
 #
 # Robustness check: does the Fisheries and seafood processing sector's
 # preferred method (BSTS, both flows, per Table 2) hold up on a longer,
@@ -30,7 +30,7 @@ library(readr)
 library(forecast)
 library(bsts)
 
-fisheries <- read_csv("ms1_trade_prediction/data/processed/fisheries_extended_comtrade.csv", show_col_types = FALSE) |>
+fisheries <- read_csv("data/processed/fisheries_extended_comtrade.csv", show_col_types = FALSE) |>
   mutate(covid_shock = as.integer(year %in% c(2020, 2021))) |>
   arrange(flow, year)
 
@@ -155,9 +155,9 @@ preferred_extended <- accuracy_extended |>
   slice_min(RMSE, n = 1) |>
   ungroup()
 
-dir.create("ms1_trade_prediction/output", showWarnings = FALSE, recursive = TRUE)
-write_csv(backtest_wide, "ms1_trade_prediction/output/fisheries_extended_backtest_origins.csv")
-write_csv(accuracy_extended, "ms1_trade_prediction/output/fisheries_extended_accuracy.csv")
+dir.create("output", showWarnings = FALSE, recursive = TRUE)
+write_csv(backtest_wide, "output/fisheries_extended_backtest_origins.csv")
+write_csv(accuracy_extended, "output/fisheries_extended_accuracy.csv")
 
 # ---- Full-sample 5-year forecast, ARIMA and BSTS only (headline methods) --
 
@@ -182,7 +182,7 @@ bsts_forecast_tbl <- bind_rows(lapply(bsts_full, function(r) {
          hi_95 = as.numeric(apply(r$prediction$distribution, 2, quantile, probs = 0.975)))
 }))
 
-write_csv(bind_rows(arima_forecast_tbl, bsts_forecast_tbl), "ms1_trade_prediction/output/fisheries_extended_forecast.csv")
+write_csv(bind_rows(arima_forecast_tbl, bsts_forecast_tbl), "output/fisheries_extended_forecast.csv")
 
 message(
   "Fisheries extended-history robustness check (Comtrade, 2000-2024, ", nrow(fisheries |> distinct(year)), " years):\n",

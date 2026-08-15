@@ -1,4 +1,4 @@
-# Oman_RG/ms1_trade_prediction/01_import_unctadstat.R
+# Oman_RG/01_import_unctadstat.R
 #
 # Imports Oman's blue economy sector trade series (exports and imports) from
 # an UNCTADstat bulk CSV export. UNCTADstat (unctadstat.unctad.org) has no
@@ -87,9 +87,9 @@ trade_national <- trade_by_sector |>
   ) |>
   arrange(flow, year)
 
-dir.create("ms1_trade_prediction/data/processed", showWarnings = FALSE, recursive = TRUE)
-write_csv(trade_national, "ms1_trade_prediction/data/processed/trade_series.csv")
-write_csv(trade_by_sector, "ms1_trade_prediction/data/processed/trade_series_by_sector.csv")
+dir.create("data/processed", showWarnings = FALSE, recursive = TRUE)
+write_csv(trade_national, "data/processed/trade_series.csv")
+write_csv(trade_by_sector, "data/processed/trade_series_by_sector.csv")
 
 message(
   "Trade series written: ", nrow(trade_by_sector), " sector-flow-year rows across ",

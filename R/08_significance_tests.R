@@ -1,4 +1,4 @@
-# Oman_RG/ms1_trade_prediction/08_significance_tests.R
+# Oman_RG/08_significance_tests.R
 #
 # Reviewer response: Table 2/3's "preferred method" was previously decided
 # by lowest point-estimate RMSE alone, with no test of whether the gap
@@ -25,10 +25,10 @@ read_bt <- function(path, col_name) {
   read_csv(path, show_col_types = FALSE) |> rename(!!col_name := point_forecast)
 }
 
-arima_bt <- read_bt("ms1_trade_prediction/output/arima_backtest_origins.csv", "ARIMA")
-bsts_bt <- read_bt("ms1_trade_prediction/output/bsts_backtest_origins.csv", "BSTS")
-naive_bt <- read_bt("ms1_trade_prediction/output/naive_backtest_origins.csv", "Naive (drift)")
-ets_bt <- read_bt("ms1_trade_prediction/output/ets_backtest_origins.csv", "ETS")
+arima_bt <- read_bt("output/arima_backtest_origins.csv", "ARIMA")
+bsts_bt <- read_bt("output/bsts_backtest_origins.csv", "BSTS")
+naive_bt <- read_bt("output/naive_backtest_origins.csv", "Naive (drift)")
+ets_bt <- read_bt("output/ets_backtest_origins.csv", "ETS")
 
 joined <- arima_bt |>
   inner_join(bsts_bt, by = c("sector", "flow", "origin_year", "actual")) |>
@@ -37,7 +37,7 @@ joined <- arima_bt |>
   mutate(Combination = (ARIMA + BSTS) / 2) |>
   arrange(sector, flow, origin_year)
 
-accuracy <- read_csv("ms1_trade_prediction/output/accuracy_comparison_5method.csv", show_col_types = FALSE)
+accuracy <- read_csv("output/accuracy_comparison_5method.csv", show_col_types = FALSE)
 
 series_keys <- joined |> distinct(sector, flow)
 
@@ -71,7 +71,7 @@ dm_results <- lapply(seq_len(nrow(series_keys)), function(i) {
 
 dm_tbl <- bind_rows(dm_results) |> arrange(sector, flow)
 
-write_csv(dm_tbl, "ms1_trade_prediction/output/diebold_mariano_tests.csv")
+write_csv(dm_tbl, "output/diebold_mariano_tests.csv")
 
 message("Diebold-Mariano tests, winner vs runner-up, all 7 backtestable series:")
 print(dm_tbl, n = Inf, width = Inf)

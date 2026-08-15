@@ -1,4 +1,4 @@
-# Oman_RG/ms1_trade_prediction/00_clean_unctadstat_downloads.R
+# Oman_RG/00_clean_unctadstat_downloads.R
 #
 # Reshapes the raw UNCTADstat pivot-table exports in
 # data/raw/unctadstat_downloads/ into the single long-format file
@@ -103,9 +103,9 @@ trade_out <- sector_rows |>
   mutate(data_source = "unctadstat_real")
 
 dir.create("data/raw", showWarnings = FALSE, recursive = TRUE)
-dir.create("ms1_trade_prediction/data/processed", showWarnings = FALSE, recursive = TRUE)
+dir.create("data/processed", showWarnings = FALSE, recursive = TRUE)
 write_csv(trade_out, "data/raw/unctadstat_export.csv")
-write_csv(crosscheck_rows, "ms1_trade_prediction/data/processed/unctadstat_crosscheck_totals.csv")
+write_csv(crosscheck_rows, "data/processed/unctadstat_crosscheck_totals.csv")
 
 message("Wrote ", nrow(trade_out), " real rows to data/raw/unctadstat_export.csv, sectors: ",
         paste(unique(trade_out$sector), collapse = "; "))
