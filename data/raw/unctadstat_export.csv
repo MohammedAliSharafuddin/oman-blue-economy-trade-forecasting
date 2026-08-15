@@ -1,0 +1,128 @@
+year,flow,sector,value_usd,data_source
+2005,Exports,Coastal and maritime tourism,150000000,unctadstat_real
+2006,Exports,Coastal and maritime tourism,189000000,unctadstat_real
+2007,Exports,Coastal and maritime tourism,225000000,unctadstat_real
+2008,Exports,Coastal and maritime tourism,277000000,unctadstat_real
+2009,Exports,Coastal and maritime tourism,239000000,unctadstat_real
+2010,Exports,Coastal and maritime tourism,271000000,unctadstat_real
+2011,Exports,Coastal and maritime tourism,346000000,unctadstat_real
+2012,Exports,Coastal and maritime tourism,381000000,unctadstat_real
+2013,Exports,Coastal and maritime tourism,450000000,unctadstat_real
+2014,Exports,Coastal and maritime tourism,485000000,unctadstat_real
+2015,Exports,Coastal and maritime tourism,558000000,unctadstat_real
+2016,Exports,Coastal and maritime tourism,631000000,unctadstat_real
+2017,Exports,Coastal and maritime tourism,655000000,unctadstat_real
+2018,Exports,Coastal and maritime tourism,659000000,unctadstat_real
+2019,Exports,Coastal and maritime tourism,679000000,unctadstat_real
+2020,Exports,Coastal and maritime tourism,173000000,unctadstat_real
+2021,Exports,Coastal and maritime tourism,163000000,unctadstat_real
+2022,Exports,Coastal and maritime tourism,581000000,unctadstat_real
+2023,Exports,Coastal and maritime tourism,1009000000,unctadstat_real
+2024,Exports,Coastal and maritime tourism,1049000000,unctadstat_real
+2005,Imports,Coastal and maritime tourism,138000000,unctadstat_real
+2006,Imports,Coastal and maritime tourism,152000000,unctadstat_real
+2007,Imports,Coastal and maritime tourism,166000000,unctadstat_real
+2008,Imports,Coastal and maritime tourism,182000000,unctadstat_real
+2009,Imports,Coastal and maritime tourism,194000000,unctadstat_real
+2010,Imports,Coastal and maritime tourism,222000000,unctadstat_real
+2011,Imports,Coastal and maritime tourism,250000000,unctadstat_real
+2012,Imports,Coastal and maritime tourism,279000000,unctadstat_real
+2013,Imports,Coastal and maritime tourism,309000000,unctadstat_real
+2014,Imports,Coastal and maritime tourism,366000000,unctadstat_real
+2015,Imports,Coastal and maritime tourism,415000000,unctadstat_real
+2016,Imports,Coastal and maritime tourism,547000000,unctadstat_real
+2017,Imports,Coastal and maritime tourism,571000000,unctadstat_real
+2018,Imports,Coastal and maritime tourism,642000000,unctadstat_real
+2019,Imports,Coastal and maritime tourism,603000000,unctadstat_real
+2020,Imports,Coastal and maritime tourism,142000000,unctadstat_real
+2021,Imports,Coastal and maritime tourism,172000000,unctadstat_real
+2022,Imports,Coastal and maritime tourism,377000000,unctadstat_real
+2023,Imports,Coastal and maritime tourism,473000000,unctadstat_real
+2024,Imports,Coastal and maritime tourism,443000000,unctadstat_real
+2012,Exports,Fisheries and seafood processing,197647000,unctadstat_real
+2013,Exports,Fisheries and seafood processing,178720000,unctadstat_real
+2014,Exports,Fisheries and seafood processing,205720000,unctadstat_real
+2015,Exports,Fisheries and seafood processing,202998000,unctadstat_real
+2016,Exports,Fisheries and seafood processing,255065000,unctadstat_real
+2017,Exports,Fisheries and seafood processing,197508000,unctadstat_real
+2018,Exports,Fisheries and seafood processing,437365000,unctadstat_real
+2019,Exports,Fisheries and seafood processing,373592000,unctadstat_real
+2020,Exports,Fisheries and seafood processing,538387000,unctadstat_real
+2021,Exports,Fisheries and seafood processing,580090000,unctadstat_real
+2022,Exports,Fisheries and seafood processing,651301000,unctadstat_real
+2023,Exports,Fisheries and seafood processing,858461000,unctadstat_real
+2024,Exports,Fisheries and seafood processing,700266000,unctadstat_real
+2012,Imports,Fisheries and seafood processing,66972000,unctadstat_real
+2013,Imports,Fisheries and seafood processing,64660000,unctadstat_real
+2014,Imports,Fisheries and seafood processing,77641000,unctadstat_real
+2015,Imports,Fisheries and seafood processing,88625000,unctadstat_real
+2016,Imports,Fisheries and seafood processing,101870000,unctadstat_real
+2017,Imports,Fisheries and seafood processing,86365000,unctadstat_real
+2018,Imports,Fisheries and seafood processing,93838000,unctadstat_real
+2019,Imports,Fisheries and seafood processing,125009000,unctadstat_real
+2020,Imports,Fisheries and seafood processing,142278000,unctadstat_real
+2021,Imports,Fisheries and seafood processing,138933000,unctadstat_real
+2022,Imports,Fisheries and seafood processing,179458000,unctadstat_real
+2023,Imports,Fisheries and seafood processing,188466000,unctadstat_real
+2024,Imports,Fisheries and seafood processing,248224000,unctadstat_real
+2005,Exports,Maritime freight transport,101000000,unctadstat_real
+2018,Exports,Maritime freight transport,218000000,unctadstat_real
+2019,Exports,Maritime freight transport,312000000,unctadstat_real
+2020,Exports,Maritime freight transport,400000000,unctadstat_real
+2021,Exports,Maritime freight transport,208000000,unctadstat_real
+2022,Exports,Maritime freight transport,203000000,unctadstat_real
+2023,Exports,Maritime freight transport,197000000,unctadstat_real
+2024,Exports,Maritime freight transport,111000000,unctadstat_real
+2005,Imports,Maritime freight transport,856000000,unctadstat_real
+2006,Imports,Maritime freight transport,1056000000,unctadstat_real
+2007,Imports,Maritime freight transport,1524000000,unctadstat_real
+2008,Imports,Maritime freight transport,2200000000,unctadstat_real
+2009,Imports,Maritime freight transport,1704000000,unctadstat_real
+2010,Imports,Maritime freight transport,1899000000,unctadstat_real
+2011,Imports,Maritime freight transport,2281000000,unctadstat_real
+2012,Imports,Maritime freight transport,2737000000,unctadstat_real
+2013,Imports,Maritime freight transport,3391000000,unctadstat_real
+2014,Imports,Maritime freight transport,2953000000,unctadstat_real
+2015,Imports,Maritime freight transport,2856000000,unctadstat_real
+2016,Imports,Maritime freight transport,2344000000,unctadstat_real
+2017,Imports,Maritime freight transport,2628000000,unctadstat_real
+2018,Imports,Maritime freight transport,2577000000,unctadstat_real
+2019,Imports,Maritime freight transport,2304000000,unctadstat_real
+2020,Imports,Maritime freight transport,2826000000,unctadstat_real
+2021,Imports,Maritime freight transport,3076000000,unctadstat_real
+2022,Imports,Maritime freight transport,3743000000,unctadstat_real
+2023,Imports,Maritime freight transport,3791000000,unctadstat_real
+2024,Imports,Maritime freight transport,4254000000,unctadstat_real
+2006,Exports,Port services and logistics,112000000,unctadstat_real
+2007,Exports,Port services and logistics,130000000,unctadstat_real
+2008,Exports,Port services and logistics,161000000,unctadstat_real
+2009,Exports,Port services and logistics,159000000,unctadstat_real
+2010,Exports,Port services and logistics,158000000,unctadstat_real
+2011,Exports,Port services and logistics,281000000,unctadstat_real
+2012,Exports,Port services and logistics,372000000,unctadstat_real
+2013,Exports,Port services and logistics,377000000,unctadstat_real
+2014,Exports,Port services and logistics,366000000,unctadstat_real
+2015,Exports,Port services and logistics,383000000,unctadstat_real
+2016,Exports,Port services and logistics,327000000,unctadstat_real
+2017,Exports,Port services and logistics,366000000,unctadstat_real
+2018,Exports,Port services and logistics,395000000,unctadstat_real
+2019,Exports,Port services and logistics,340000000,unctadstat_real
+2020,Exports,Port services and logistics,319000000,unctadstat_real
+2021,Exports,Port services and logistics,188000000,unctadstat_real
+2022,Exports,Port services and logistics,183000000,unctadstat_real
+2023,Exports,Port services and logistics,178000000,unctadstat_real
+2024,Exports,Port services and logistics,100000000,unctadstat_real
+2011,Imports,Port services and logistics,16000000,unctadstat_real
+2012,Imports,Port services and logistics,21000000,unctadstat_real
+2013,Imports,Port services and logistics,11000000,unctadstat_real
+2014,Imports,Port services and logistics,10000000,unctadstat_real
+2015,Imports,Port services and logistics,6000000,unctadstat_real
+2016,Imports,Port services and logistics,4000000,unctadstat_real
+2017,Imports,Port services and logistics,68000000,unctadstat_real
+2018,Imports,Port services and logistics,135000000,unctadstat_real
+2019,Imports,Port services and logistics,144000000,unctadstat_real
+2020,Imports,Port services and logistics,110000000,unctadstat_real
+2021,Imports,Port services and logistics,16000000,unctadstat_real
+2022,Imports,Port services and logistics,19000000,unctadstat_real
+2023,Imports,Port services and logistics,20000000,unctadstat_real
+2024,Imports,Port services and logistics,22000000,unctadstat_real

@@ -1,0 +1,11 @@
+Dataset: Ocean goods: Bilateral trade by product group - Annual (analytical)
+
+Page Filters: 
+	Flow: Imports 
+	Product: Seafood processing 
+	Partner: World 
+
+
+Download Type: Pivot
+
+Language: English

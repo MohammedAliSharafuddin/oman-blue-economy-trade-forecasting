@@ -1,0 +1,8 @@
+sector,flow,preferred_method,RMSE,n_origins
+Coastal and maritime tourism,Exports,ARIMA,221225172.396524,10
+Coastal and maritime tourism,Imports,ARIMA,195661216.04656386,10
+Fisheries and seafood processing,Exports,BSTS,157550086.3480157,3
+Fisheries and seafood processing,Imports,BSTS,31160117.561887093,3
+Maritime freight transport,Imports,BSTS,436568050.17311466,10
+Port services and logistics,Exports,Combination,64428688.28462317,9
+Port services and logistics,Imports,Combination,47665508.35239582,4

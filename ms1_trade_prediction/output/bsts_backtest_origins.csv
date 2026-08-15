@@ -1,0 +1,50 @@
+origin_year,actual,point_forecast,sector,flow
+2014,558000000,527720423.6966481,Coastal and maritime tourism,Exports
+2015,631000000,607316084.4725536,Coastal and maritime tourism,Exports
+2016,655000000,687321538.9015378,Coastal and maritime tourism,Exports
+2017,659000000,708448413.944585,Coastal and maritime tourism,Exports
+2018,679000000,702714480.8761342,Coastal and maritime tourism,Exports
+2019,173000000,713330334.2541524,Coastal and maritime tourism,Exports
+2020,163000000,201424671.57950795,Coastal and maritime tourism,Exports
+2021,581000000,709069282.8205618,Coastal and maritime tourism,Exports
+2022,1009000000,557367659.7439746,Coastal and maritime tourism,Exports
+2023,1049000000,1209545668.1780953,Coastal and maritime tourism,Exports
+2014,415000000,402550775.0095986,Coastal and maritime tourism,Imports
+2015,547000000,463533932.93672514,Coastal and maritime tourism,Imports
+2016,571000000,636241156.9259485,Coastal and maritime tourism,Imports
+2017,642000000,637368614.2546238,Coastal and maritime tourism,Imports
+2018,603000000,701999857.5979328,Coastal and maritime tourism,Imports
+2019,142000000,646529254.2200866,Coastal and maritime tourism,Imports
+2020,172000000,161031565.8959543,Coastal and maritime tourism,Imports
+2021,377000000,697378134.190686,Coastal and maritime tourism,Imports
+2022,473000000,334184553.85767835,Coastal and maritime tourism,Imports
+2023,443000000,467913348.00904703,Coastal and maritime tourism,Imports
+2021,651301000,638426075.1366385,Fisheries and seafood processing,Exports
+2022,858461000,708324838.4980487,Fisheries and seafood processing,Exports
+2023,700266000,927773051.4160482,Fisheries and seafood processing,Exports
+2021,179458000,148845264.90425262,Fisheries and seafood processing,Imports
+2022,188466000,192293300.3638783,Fisheries and seafood processing,Imports
+2023,248224000,203940018.68289024,Fisheries and seafood processing,Imports
+2014,2856000000,3318749045.1528916,Maritime freight transport,Imports
+2015,2344000000,3091475938.248501,Maritime freight transport,Imports
+2016,2628000000,2283098887.8621564,Maritime freight transport,Imports
+2017,2577000000,2637632191.359866,Maritime freight transport,Imports
+2018,2304000000,2563568712.0213904,Maritime freight transport,Imports
+2019,2826000000,2259998965.3054256,Maritime freight transport,Imports
+2020,3076000000,2905329413.5202875,Maritime freight transport,Imports
+2021,3743000000,3032286488.291547,Maritime freight transport,Imports
+2022,3791000000,4009730563.6299767,Maritime freight transport,Imports
+2023,4254000000,4052484899.6472197,Maritime freight transport,Imports
+2015,327000000,412992998.76000744,Port services and logistics,Exports
+2016,366000000,306776123.4032196,Port services and logistics,Exports
+2017,395000000,381626768.9552303,Port services and logistics,Exports
+2018,340000000,409572367.96702534,Port services and logistics,Exports
+2019,319000000,338138280.3633279,Port services and logistics,Exports
+2020,188000000,311190669.9239415,Port services and logistics,Exports
+2021,183000000,116910466.33705454,Port services and logistics,Exports
+2022,178000000,143922032.96362692,Port services and logistics,Exports
+2023,100000000,160435876.7069463,Port services and logistics,Exports
+2020,16000000,107876385.70647164,Port services and logistics,Imports
+2021,19000000,-48681745.51773134,Port services and logistics,Imports
+2022,20000000,-1442681.521588767,Port services and logistics,Imports
+2023,22000000,15063104.632518245,Port services and logistics,Imports
